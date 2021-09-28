@@ -44,8 +44,21 @@ public class InvoiceGeneratorTest {
 	public void givenMultipleRideReturnInvoiceSummary() {
 		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
 		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
-		InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(rides);
+		InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(1, rides);
 		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+		Assert.assertEquals(expectedInvoiceSummary, summary);
+	}
+
+	/*
+	 * to get summary based on id
+	 */
+	@Test
+	public void givenMultipleRideReturnSummaryById() {
+		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+		InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(1, rides);
+		// InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+		InvoiceSummary expectedInvoiceSummary = invoiceGenerator.getSummaryById(1);
 		Assert.assertEquals(expectedInvoiceSummary, summary);
 	}
 }
