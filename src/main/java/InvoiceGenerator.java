@@ -22,4 +22,13 @@ public class InvoiceGenerator {
 		return totalFare;
 	}
 
+	/*
+	 * method to get invoice summary of multiple rides
+	 */
+	public InvoiceSummary getInvoiceSummary(Ride[] rides) {
+		double totalFare = 0;
+		totalFare = this.calculateFare(rides);
+		InvoiceSummary invoice = new InvoiceSummary(rides.length, totalFare);
+		return invoice;
+	}
 }

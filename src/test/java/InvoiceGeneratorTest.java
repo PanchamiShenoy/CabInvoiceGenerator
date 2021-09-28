@@ -13,6 +13,7 @@ public class InvoiceGeneratorTest {
 		double fare = invoiceGenerator.calculateFare(distance, time);
 		Assert.assertEquals(25, fare, 0.0);
 	}
+
 	/*
 	 * return minimum fare when distance and time is less
 	 */
@@ -24,6 +25,7 @@ public class InvoiceGeneratorTest {
 		double fare = invoiceGenerator.calculateFare(distance, time);
 		Assert.assertEquals(5, fare, 0.0);
 	}
+
 	/*
 	 * calculate fare for multiple rides
 	 */
@@ -33,5 +35,17 @@ public class InvoiceGeneratorTest {
 		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
 		double fare = invoiceGenerator.calculateFare(rides);
 		Assert.assertEquals(30, fare, 0.0);
+	}
+
+	/*
+	 * to get summary of multiple rides
+	 */
+	@Test
+	public void givenMultipleRideReturnInvoiceSummary() {
+		InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+		InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(rides);
+		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+		Assert.assertEquals(expectedInvoiceSummary, summary);
 	}
 }
