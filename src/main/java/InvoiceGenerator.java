@@ -9,7 +9,6 @@ public class InvoiceGenerator {
 	private static final double MINIMUM_COST_PER_KM_PREMIUM = 15.0;
 	private static final double MINIMUM_FARE_PREMIUM = 20;
 	HashMap<Integer, InvoiceSummary> map = new HashMap<>();
-
 	/*
 	 * method to calculate fare
 	 */
@@ -38,6 +37,7 @@ public class InvoiceGenerator {
 	 * method to get invoice summary of multiple rides
 	 */
 	public InvoiceSummary getInvoiceSummary(int id, Ride[] rides, String category) {
+
 		double totalFare = 0;
 		totalFare = this.calculateFare(rides, category);
 		InvoiceSummary invoice = new InvoiceSummary(rides.length, totalFare);
@@ -51,4 +51,6 @@ public class InvoiceGenerator {
 	public InvoiceSummary getSummaryById(int id) {
 		return map.get(id);
 	}
+
 }
+
